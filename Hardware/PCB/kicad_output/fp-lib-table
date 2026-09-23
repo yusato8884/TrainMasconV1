@@ -1,0 +1,4 @@
+(fp_lib_table
+	(version 7)
+	(lib (name "Mascon") (type "KiCad") (uri "${KIPRJMOD}/Mascon.kicad_footprints.pretty") (options "") (descr "Converted from EasyEDA Pro"))
+)
