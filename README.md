@@ -15,11 +15,28 @@
 
 ```
 Firmware/
-  main.py       本体ファームウェア（ノッチ→キー入力、OLED表示、USB HID）
-  vrcalib.py    可変抵抗の電圧測定ツール（ノッチ境界の電圧調整用）
+  LICENSE                               ソフトウェアのライセンス（MIT）
+  main.py                               本体ファームウェア（ノッチ→キー入力、OLED表示、USB HID）
+  vrcalib.py                            可変抵抗の電圧測定ツール（ノッチ境界の電圧調整用）
 Hardware/
-  PCB/          基板データ（EasyEDA Pro原本 .epro2 と、KiCad 8 変換版 kicad_output/）
-  Enclosure/    3Dプリント用ケース（STL: Top / Bottom / Handle / Handle-Stopper）
+  Enclosure/                            3Dプリント用ケース
+    TRM1-Case-Top.stl                   ケース上部
+    TRM1-Case-Bottom.stl                ケース下部
+    TRM1-Case-Handle.stl                ハンドル
+    TRM1-Case-Handle-Stopper.stl        ハンドルのストッパー
+  PCB/                                  基板データ
+    ProPrj_Mascon_2026-09-23.epro2      EasyEDA Pro の原本
+    kicad_output/                       KiCad 8 変換版
+      Mascon.kicad_pro                  KiCad プロジェクトファイル
+      Mascon.kicad_sch                  回路図
+      Mascon.kicad_pcb                  基板
+      Mascon.kicad_sym                  シンボルライブラリ
+      Mascon.kicad_footprints.pretty/   フットプリントライブラリ（.kicad_mod 8点）
+      fp-lib-table                      フットプリントライブラリ設定
+      sym-lib-table                     シンボルライブラリ設定
+      CONVERSION_NOTES.md               変換時の注意事項
+  LICENSE                               ハードウェアのライセンス（CERN-OHL-P v2）
+README.md                               このファイル
 ```
 
 ## 配線
@@ -57,18 +74,20 @@ Hardware/
 ## ハードウェア
 
 - `Hardware/PCB/ProPrj_Mascon_2026-09-23.epro2` が基板の原本です。
-- `Hardware/PCB/kicad_output/` は KiCad 8 向けの変換結果です。KiCad での動作確認は未実施のため、開く際は [CONVERSION_NOTES.md](Hardware/PCB/kicad_output/CONVERSION_NOTES.md) を確認してください。
-- ケースのSTLについての注意:
+- `Hardware/PCB/kicad_output/` は KiCad 8 向けの変換結果です（開く場合は `Mascon.kicad_pro` を指定します）。KiCad での動作確認は未実施のため、開く際は [CONVERSION_NOTES.md](Hardware/PCB/kicad_output/CONVERSION_NOTES.md) を確認してください。
+- ケースのSTL（`Hardware/Enclosure/` 内の `TRM1-Case-*.stl` 4点）についての注意:
   - サポート材は含まれていません。造形方向やプリンターに応じて、必要ならスライサー側で追加してください。
   - 薄肉部分やクリアランス（はめ合いの隙間）は十分に考慮されていません。
   - そのため、3Dプリントサービスに発注するか、自分で造形する場合は精度の非常に高いプリンター（光造形など）が必要です。一般的なFDMプリンターでは、そのままでは組み立てられない可能性があります。
 
 ## ライセンス
 
+ライセンスは、対象ごとにそれぞれのフォルダ内の `LICENSE` に記載されています。
+
 | 対象 | ライセンス | ファイル |
 |---|---|---|
-| ハードウェア（`Hardware/` 配下: 基板、回路図、ケース） | [CERN-OHL-P v2](LICENSE-HARDWARE) | `LICENSE-HARDWARE` |
-| ソフトウェア（`Firmware/` 配下） | [MIT](LICENSE-SOFTWARE) | `LICENSE-SOFTWARE` |
+| ハードウェア（`Hardware/` 配下: 基板、回路図、ケース） | [CERN-OHL-P v2](Hardware/LICENSE) | `Hardware/LICENSE` |
+| ソフトウェア（`Firmware/` 配下） | [MIT](Firmware/LICENSE) | `Firmware/LICENSE` |
 
 SPDX: `CERN-OHL-P-2.0`（ハードウェア）/ `MIT`（ソフトウェア）
 
@@ -93,11 +112,28 @@ Documentation: <https://y-trm1doc.base44.app/>
 
 ```
 Firmware/
-  main.py       Main firmware (notch→key input, OLED display, USB HID)
-  vrcalib.py    Variable resistor voltage measurement tool (for adjusting notch boundary voltages)
+  LICENSE                               Software license (MIT)
+  main.py                               Main firmware (notch→key input, OLED display, USB HID)
+  vrcalib.py                            Variable resistor voltage measurement tool (for adjusting notch boundary voltages)
 Hardware/
-  PCB/          PCB data (EasyEDA Pro original .epro2 and KiCad 8 converted version kicad_output/)
-  Enclosure/    3D-printable case (STL: Top / Bottom / Handle / Handle-Stopper)
+  Enclosure/                            3D-printable case
+    TRM1-Case-Top.stl                   Case top
+    TRM1-Case-Bottom.stl                Case bottom
+    TRM1-Case-Handle.stl                Handle
+    TRM1-Case-Handle-Stopper.stl        Handle stopper
+  PCB/                                  PCB data
+    ProPrj_Mascon_2026-09-23.epro2      EasyEDA Pro original
+    kicad_output/                       KiCad 8 converted version
+      Mascon.kicad_pro                  KiCad project file
+      Mascon.kicad_sch                  Schematic
+      Mascon.kicad_pcb                  PCB layout
+      Mascon.kicad_sym                  Symbol library
+      Mascon.kicad_footprints.pretty/   Footprint library (8 .kicad_mod files)
+      fp-lib-table                      Footprint library table
+      sym-lib-table                     Symbol library table
+      CONVERSION_NOTES.md               Notes on the conversion
+  LICENSE                               Hardware license (CERN-OHL-P v2)
+README.md                               This file
 ```
 
 ## Wiring
@@ -135,18 +171,20 @@ Starting while holding Button 1 enters safe mode (HID initialization and the mai
 ## Hardware
 
 - `Hardware/PCB/ProPrj_Mascon_2026-09-23.epro2` is the original PCB design file.
-- `Hardware/PCB/kicad_output/` contains the conversion results for KiCad 8. Since operation in KiCad has not been verified, check [CONVERSION_NOTES.md](Hardware/PCB/kicad_output/CONVERSION_NOTES.md) when opening the files.
-- Notes on the case STL files:
+- `Hardware/PCB/kicad_output/` contains the conversion results for KiCad 8 (open `Mascon.kicad_pro` to load the project). Since operation in KiCad has not been verified, check [CONVERSION_NOTES.md](Hardware/PCB/kicad_output/CONVERSION_NOTES.md) when opening the files.
+- Notes on the case STL files (the four `TRM1-Case-*.stl` files in `Hardware/Enclosure/`):
   - Support material is not included. Add it in the slicer as necessary depending on the print orientation and printer.
   - Thin sections and clearances (gaps for fitting) have not been sufficiently taken into consideration.
   - Therefore, if ordering from a 3D printing service, or printing it yourself, a very high-precision printer (such as a resin printer) is required. With a typical FDM printer, it may not be possible to assemble it as-is.
 
 ## License
 
+The license for each part is provided in the `LICENSE` file inside the corresponding folder.
+
 | Target | License | File |
 |---|---|---|
-| Hardware (PCB, schematics, and case under `Hardware/`) | [CERN-OHL-P v2](LICENSE-HARDWARE) | `LICENSE-HARDWARE` |
-| Software (under `Firmware/`) | [MIT](LICENSE-SOFTWARE) | `LICENSE-SOFTWARE` |
+| Hardware (PCB, schematics, and case under `Hardware/`) | [CERN-OHL-P v2](Hardware/LICENSE) | `Hardware/LICENSE` |
+| Software (under `Firmware/`) | [MIT](Firmware/LICENSE) | `Firmware/LICENSE` |
 
 SPDX: `CERN-OHL-P-2.0` (hardware) / `MIT` (software)
 
